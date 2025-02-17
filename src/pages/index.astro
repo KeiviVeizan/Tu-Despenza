@@ -13,11 +13,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 
 			<header>
+				<div class="header-left">
+					<i>
+						<img src=".././../public/images/market.png" alt="imagen">
+					</i>
+					<h3>
+						Tu Despenza
+					</h3>
+				</div>
 				<nav>
 					<ul>
-						<li>Acerca de Nosotros</li>
-						<li> Nuestro objetivo</li>
-						<li> Andrew me la pelas</li>
+						<li><a href="">Acerca de Nosotros</a></li>
+						<li><a href="">Nuestro objetivo</a></li>
+						<li><a href="">Andrew me la pelas</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -40,5 +48,28 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	li{
 		float: right;
 		padding: 20px 10px;
+	}
+	li a {
+		text-decoration: none;
+		color: black;
+		font-size: 1.5rem;
+	}
+	.header-left{
+		display: flex;
+		flex-direction: row;
+		justify-content: left	;
+		align-items: center;
+		padding: 10px;
+		width: 50%;
+	}
+	.header-left img{
+		margin-right: 10px;
+	}
+	header{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin: 0px 40px;
 	}
 </style>
