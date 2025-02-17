@@ -1,45 +1,111 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+const ExtraInformationCards = [
+	{
+		id:1,
+		info: "En Tu Despenza, creemos que una cocina bien organizada es la clave para una alimentación práctica y saludable. Nuestra app está diseñada para ayudarte a gestionar tu despensa de manera eficiente y brindarte recomendaciones personalizadas para que aproveches al máximo los ingredientes que tienes en casa.",
+		image: "images/img3.jpg"
+	},
+    {
+         id:2,
+        title: "¿Qué hacemos?",
+        info:["Te ayudamos a organizar tu despensa para que siempre sepas qué tienes disponible y evites desperdicios.",
+          "Creamos listas inteligentes para que puedas hacer compras más eficientes.",
+          "Generamos recetas personalizadas en nuestro plan premium, recomendándote opciones ideales según tu estilo de vida y necesidades nutricionales.",
+          "Calculamos el valor nutricional de cada receta, ayudándote a llevar una alimentación equilibrada."],
+        image:"images/img2.jpg"
+},
+	{
+		id:3,
+        title:"Nuestra Misión",
+		info: "Facilitar la vida en la cocina a través de la tecnología, ayudando a las personas a planificar mejor su alimentación, reducir desperdicios y disfrutar de una cocina más organizada y saludable.",
+		image: "images/img4.jpg"
+	},
+]
 ---
-
-<!doctype html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Tu Despenza</title>
 	</head>
-	<body>
-
-			<header>
-				<div class="header-left">
-					<i>
-						<img src=".././../public/images/market.png" alt="imagen">
-					</i>
-					<h3>
-						Tu Despenza
-					</h3>
+	<body class="fade-in">
+		<section class="inicio">
+			<article class="init">
+				<header class="head">
+					<nav>
+						<ul>
+							
+							<li><a href="./planes">Nuestro Planes</a></li>
+							<li><a href="./" class="about">Inicio</a></li>
+						</ul>
+					</nav>
+				</header>
+				<div class="conteiner">
+					<h1>Tu Despenza</h1>
+					<p>Organiza, Planifica y Cocina Inteligente</p>
 				</div>
-				<nav>
-					<ul>
-						<li><a href="">Acerca de Nosotros</a></li>
-						<li><a href="">Nuestro objetivo</a></li>
-						<li><a href="">Andrew me la pelas</a></li>
-					</ul>
-				</nav>
-			</header>
-
+				
+			</article>
+		</section>
+		<main>
+			<h2>
+				Cocina sin desperdicios, come con inteligencia.
+			</h2>
+			{
+				ExtraInformationCards.map((ec)=>(
+				<div class={`info info${ec.id}`}>
+					<img src={ec.image} alt="Imagen de la empresa">
+                    <div class="info-card">
+                        <h3>{ec.title}</h3>
+                        <p>
+                            {ec.info}
+                        </p>
+                    </div>
+				</div>
+				))
+			}
+		</main>
+		
+<footer>
+      <div class="foot">
+        <h3>
+          <b>Ubicanos y Contactanos por:</b>
+        </h3>
+        <div class="icons">
+          <a  href="https://wa.link/5x7v06" target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/icon_whatsapp.svg" alt="Whatsapp"></a>
+          <a  href="mailto:jcomercial@empresa-eucaliptus.com ?subject=Consulta&body=Hola,%20quiero%20hacerte%20una%20consulta." target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/icon_mail.svg" alt="Mail"></a>
+          <a  href="https://maps.app.goo.gl/KvypU8gvzEVvwjGD6" target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/icon_maps.svg" alt="Maps"></a>
+        </div>
+        </div>
+        <div class="foot">
+        <h3>
+          <b>Visitanos en Nuestras Redes Sociales:</b>
+        </h3>
+          <div class="icons2">
+            <a href="https://www.instagram.com/EIECOSS_SRL/" target="_blank "><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/instagram-icon.png" alt="link de instagram"></a>
+            <a href="https://www.facebook.com/profile.php?id=61565396315237&mibextid=JRoKGi" target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/facebook.png" alt="facebook"></a>
+            <a href="https://www.tiktok.com/@eiecoss?_t=8pmRi0HReRZ&_r=1" target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/tik-tok.png" alt="tik Tok"></a>
+          </div>
+        
+      </div>
+    </footer>
 	</body>
 </html>
 <style>
 	*{
-		padding: 0%;
-		margin: 0%;
-		bottom: 0%;
+		margin: 0;
+		padding: 0;
+		bottom: 0;
 	}
 	body{
-		height: 100%;
+		height: 100%; 
+		margin: 0;    
+		background: linear-gradient(to bottom, #fcfbf2, #ffffff);	
 	}
 	ul{
 		list-style-type: none;
@@ -48,28 +114,520 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	li{
 		float: right;
 		padding: 20px 10px;
+		transition: background-color, 2s;
 	}
-	li a {
+	li:hover{
+		background-color: rgba(0, 0, 0, 0.5);
+		color: white;
+	}	
+	.about{
+		color: #E2B155 !important;
+	}
+	li a{
 		text-decoration: none;
+		color: green;
+		padding: 0px;
+		font-family: "Archivo Black", sans-serif;
+		font-size: 10px;
+		margin: 0px;
+	}
+	li a:hover{
+		color: white;
+	}
+	
+	.init{
+		height: 100vh;
+		transition: background-color, 2s;
+		background-color: rgba(0, 0, 0, 0.7);
+	}
+	.inicio p{
+		font-size: 20px;
+		font-family: "Myriad Regular";;
+	}
+	.conteiner{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-family: "Myriad Pro Regular";
+		font-size: 80px;
+		color: white;
+		height: 60vh;
+		text-align: center;
+	}
+	h1{
+		font-size: 40px;
+		animation: slideInFromBottom 1.5s ease-out forwards;
+	}
+	.conteiner p{
+		animation: slideInFromBottom 1.5s ease-out forwards;
+	}
+	.inicio{
+		background-image: url('../../public/images/img-principal.jpg');
+        background-size: 100vh;
+		background-repeat: no-repeat;
+		background-position: center;
+		opacity:0.9;
+		z-index: -1;
+	}	
+	main h2{
+		text-align: center;
+		font-size: 18px;
 		color: black;
-		font-size: 1.5rem;
+		font-family: "Myriad Pro Regular" ;
+		margin: 20px 0px 10px;
+		opacity: 0;
+		transform: translateY(50px);
+		transition: opacity 1s ease-out, transform 1s ease-out;
 	}
-	.header-left{
+	main h2.visible{
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	footer{
+	background-color: #1759AC;
+	height: 319px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-evenly;
+
+  }
+  footer h3{
+	margin: 20px;
+	font-size: 24;
+	font-family: "Archivo Black", sans-serif;
+	color: white;
+  }
+  .foot h3{
+	margin: 20px;
+	font-size: 24;
+	font-family: "Archivo Black", sans-serif;
+	color: white;
+  }
+  .foot img{
+	width: 43px;
+	height: 43px;
+	padding: 0px 20px;
+	transition: transform, 500ms;
+  }
+  .foot img:hover{
+	transform: scale(1.5);
+  }
+  .foot{
+	display: flex;
+	justify-content:center ;
+	align-items: center;
+	flex-direction: column;
+  }
+	.info{
 		display: flex;
-		flex-direction: row;
-		justify-content: left	;
+		align-content: center;
 		align-items: center;
+		flex-direction:column;
+		margin: 10px 0px;
+		text-align: center;
+		font-size: 24px;
+		font-family: "Myriad Pro Regular";
+		opacity: 0;
+		transform: translateY(50px);
+		transition: opacity 1s ease-out, transform 1s ease-out;
+	}
+    .info h3{
+        margin-bottom: 30px;
+    }
+	.info p{
+		font-size: 20px;
+		line-height: 1.5;
+		max-width: 85%;
+
+	}
+	.info img {
+		box-shadow: 0px 20px 100px #e2d075; 
+		border-radius: 30px; 
+		width: 100%; 
+		max-width: 540px; 
+		height: auto; 
+	}
+	.info.visible{
+		opacity: 1;
+		transform: translateY(0);
+	}
+	.info1{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 30px;
+		opacity: 0;
+		transform: translateY(50px);
+		transition: opacity 1s ease-out, transform 1s ease-out;
+	}
+	.info1 p{
+		text-align: center;
+		line-height: 1.5;
+		font-size: 12px;
+	}
+	.info1 img{ 
+		border-radius: 30px;  
+		margin-bottom: 30px;
+		height: 200px;
+		width: 290px;
+	}
+	.info1.visible{
+		opacity: 1;
+		transform: translateY(0);
+	}
+	.info2{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: 30px 0px;
+		opacity: 0;
+		transform: translateY(50px);
+		transition: opacity 1s ease-out, transform 1s ease-out;
+	}
+	.info2 p{
+		text-align: center;
+		line-height: 1.5;
+		font-size: 12px;
+	}
+	.info2 img{ 
+		border-radius: 30px; 
+		margin-bottom: 30px;
+		height: 220px;
+		width: 220px;
+	}
+	.info2.visible{
+		opacity: 1;
+		transform: translateY(0);
+	}
+	.info3 p{
+		text-align: center;
+		line-height: 1.5;
+		font-size: 12px;
+	}
+	.info3 img{
+			height: 220px;
+			width: 220px;
+			margin-bottom: 30px;
+		}
+	.icons img{
+		width: 43px;
+		height: 43px;
+		padding: 0px 20px;
+		transition: transform, 500ms;
+	}
+	.icons img:hover{
+		transform: scale(1.5);
+	}
+	.carru{
+		text-align: center;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		font-size: 40px;
+		font-family: "Myriad Pro Regular";
+		opacity: 0;
+		transform: translateY(50px);
+		transition: opacity 1s ease-out, transform 1s ease-out;
+	}
+	.carru.visible{
+		opacity: 1;
+		transform: translateY(0);
+	}
+	.carru h3{
+		margin-bottom: 50px;
+	}
+	.slider {
+		position: relative;
+		width: 100%;
+		max-width: 800px; 
+		height: 500px; 
+		margin: auto;
+		overflow: hidden;
+		border-radius: 15px;
+		border: 5px solid #d2d2d2;
+		box-shadow: 20px 20px 20px rgb(78, 64, 64);
+	}
+
+	.slides {
+		display: flex;
+		transition: transform 0.5s ease-in-out;
+		height: 100%; 
+	}
+
+	.slide {
+		min-width: 100%;
+		height: 100%;
+		position: relative;
+	}
+
+	.slide img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: opacity 0.5s ease;
+	}
+
+	.caption {
+		position: absolute;
+		font-size: 24px;
+		font-family: "Archivo Black",sans-serif;
+		left: 0;
+		right: 0;
+		color: white;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.5);
 		padding: 10px;
-		width: 50%;
+		opacity: 0;
+		transition: opacity 0.5s ease;
 	}
-	.header-left img{
-		margin-right: 10px;
+	.head {
+		animation: slideInFromLeft 1.5s ease-out forwards;
 	}
-	header{
+	.slide:hover img {
+		opacity: 0.3;
+	}
+
+	.slide:hover .caption {
+		opacity: 1;
+	}
+		/* Animación de fade-in */
+	@keyframes fadeIn {
+		0% { 
+			opacity: 0; 
+		}
+		100% { 
+			opacity: 1; 
+		}
+	}
+
+	.fade-in {
+		animation: fadeIn 1s ease-in forwards;
+	}
+	@keyframes slideInFromBottom {
+		0% {
+			transform: translateY(100%);
+			opacity: 0;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes slideInFromLeft {
+		0% {
+			transform: translateX(-100%);
+			opacity: 0;
+		}
+		100% {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+		.foot .icons img {
+			height: 24px;
+			width: 24px;
+			padding: 0;
+			margin: 0px 10px ;
+		}
+		.foot .icons2 img {
+			height: 24px;
+			width: 24px;
+			padding: 0;
+			margin: 0px 10px;
+		}
+		.slider{
+			max-width: 80%;
+			max-height: 250px;
+		}
+		.caption{
+			font-size: 12px;
+		}
+		.carru h3 {
+			font-size: 20px;
+			max-width: 99%;
+		}
+		.foot h3{
+			font-size: 10px;
+			text-align: center;
+		}
+		footer{
+			height: 200px;
+		}
+	.conteiner{
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		margin: 0px 40px;
+		justify-content: end;
+	}
+	@media(min-width:375px){
+		.info p{
+			max-width: 90%;
+		}
+		.info1 p{
+			max-width: 100%;
+		}
+	}
+	@media(min-width:658px){
+		h1{
+			font-size: 60px;
+		}
+		main h2{
+			font-size: 40px;
+		}
+		.head a{
+			font-size: 20px;
+		}
+		.info{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+		main .info p{
+			font-size: 20px;
+		}
+		.caption{
+			font-size: 20px;
+		}
+	}
+	@media(min-width:1024px){
+		.head a {
+			font-size: 25px;
+		}
+		h1{
+			font-size: 100px;
+		}
+		.conteiner {
+			display: flex;
+			justify-content: end;
+		}
+		.conteiner p{
+			font-size: 50px;
+		}
+		.inicio{
+			background-size: 172vh;
+		}
+		.init{
+			height: 100vh;
+		}
+		main h2{
+			font-size: 60px;
+			width: 100%;
+		}
+		.info{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: center;
+		}
+		main .info p{
+			max-width: 35rem ;
+			font-size: 20px ;
+		}
+		main .info1 img{
+			width:419px;
+			height: 290px;
+			margin: 0%;
+		}
+		main .info2 img{
+			width: 384px;
+			height: 385px;
+		}
+		main .info3 img{
+			width: 384px;
+			height: 385px;
+		}
+		
+		.info2{
+			display: flex;
+			flex-direction: row-reverse;
+		}
+		.carru h3 {
+			font-size: 60px;
+		}
+		.slider{
+			max-width: 60%;
+			max-height: 400px;
+		}
+		.foot h3{
+			font-size: 20px;
+		}
+		.foot .icons img {
+			height: 40px;
+			width: 40px;
+			padding: 0;
+			margin: 0px 10px ;
+		}
+		.foot .icons2 img {
+			height: 40px;
+			width: 40px;
+			padding: 0;
+			margin: 0px 10px ;
+		}
+		.caption{
+			font-size: 25px;
+		}
+	}
+	@media(min-width:1440px){
+		.inicio{
+			background-size: 200vh;
+		}
+		main h2{
+			font-size: 80px;
+		}
+		main .info p{
+			max-width: 45rem ;
+			font-size: 20px ;
+		}
+		.slider{
+			max-width: 60%;
+			max-height: 900px;
+		}
+		.carru h3{
+			font-size: 80px;
+		}
 	}
 </style>
+<script>
+	const fadeElements = document.querySelectorAll('.carru, .info, main h2, .info1, .info2');
+	const observer = new IntersectionObserver((entries, observer) => {
+	entries.forEach(entry => {
+		if (entry.isIntersecting) {
+		entry.target.classList.add('visible');
+		} else {
+		entry.target.classList.remove('visible');
+		}
+	});
+	}, {
+	threshold: 0.5
+	});
+	fadeElements.forEach(element => {
+	observer.observe(element);
+	});
+
+	//pare el carrusel
+	const slides = document.querySelector('.slides');
+		let currentIndex = 0;
+		let autoSlideInterval;
+
+		function startAutoSlide() {
+			autoSlideInterval = setInterval(() => {
+				currentIndex = (currentIndex + 1) % document.querySelectorAll('.slide').length;
+				slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+			}, 2500);
+		}
+
+		function stopAutoSlide() {
+			clearInterval(autoSlideInterval);
+		}
+
+		document.querySelectorAll('.slide').forEach(slide => {
+			slide.addEventListener('mouseover', stopAutoSlide);
+			slide.addEventListener('mouseout', startAutoSlide);
+		});
+
+		startAutoSlide();
+</script>

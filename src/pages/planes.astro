@@ -1,0 +1,595 @@
+---
+import { object } from "astro/zod"
+
+const ExtraInformacionProduct = [
+{
+  id:1,
+  title: "¿Qué planes tenemos?",
+  info: "Descubre la mejor manera de aprovechar al máximo tu cocina con nuestra app de generación de recetas. Contamos con dos planes diseñados para adaptarse a tus necesidades: una opción gratuita para explorar lo esencial y un plan premium con funciones avanzadas para llevar tu experiencia culinaria a otro nivel.",
+  image: "../../public/images/despensa-en-la-cocina.webp"
+},
+{
+  id:2,
+  title: "Plan Básico",
+  info:"Con el Plan Básico, tendrás el control total de los ingredientes que tienes en casa sin preocuparte por olvidos. Este plan te permite:",
+  list:["Registrar y organizar todos los productos de tu despensa.",
+          "Crear listas detalladas de los alimentos que tienes disponibles.",
+          "Visualizar tus productos para evitar desperdicios y mejorar tu planificación.",
+          "Es la opción ideal para quienes desean llevar un control ordenado de su despensa sin costo alguno."],
+  image:"../../public/images/plan-premium.jpg"
+},
+{
+  id:3,
+  title:"Plan Premium",
+  info:"El Plan Premium transforma tu cocina con recomendaciones inteligentes y recetas personalizadas. Suscríbete y disfruta de funciones exclusivas como:",
+  list:[" Generación de recetas basada en los ingredientes que tienes disponibles.",
+          "Recomendaciones optimizadas según tu estilo de vida, gustos y necesidades nutricionales.",
+          "Recomendaciones optimizadas según tu estilo de vida, gustos y necesidades nutricionales.",
+          "Sugerencias de menús semanales adaptados a tu dieta.",
+        ],
+  extra_info:"Con el Plan Premium, cocinar será más fácil, saludable y adaptado a ti. ¡Convierte tu despensa en un aliado para tu bienestar!",   
+  image:"../../public/images/plan-básico.jpg"
+}
+  
+]
+---
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Producto</title>
+</head>
+<body class="fade-in">
+  <header class="Encabezado">  
+    <nav class="header-all">
+      <div class="header-top">
+        <img src="../../public/images/market.png" alt="">
+        <h3>
+          TU DESPENZA
+        </h3>
+        <button class="header-btn">
+          <img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/icon-menu.png" alt="Icon-Menu">
+        </button>
+      </div>
+      <ul class="header-menu">
+        <li class="product"><a href="./planes">Nuestros Planes </a> </li>
+        <li><a href="./">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="head">
+      <h2>
+        NUESTROS PLANES 
+      </h2>
+      <img src="../../public/images/img1.jpg" alt="imagen principal">
+    </section>
+  </main>
+  <section class="contenidoo">
+
+    <div class="information">
+      {
+        ExtraInformacionProduct.map((ec)=>(
+          <div class={`information information${ec.id}`}>
+          <div class={`information-top information-top${ec.id}`}>
+            <h3>
+            {ec.title}
+           </h3>
+           <p>
+            {ec.info}
+           </p>
+           <ul>
+            {
+            ec.list?.map((lis)=>(
+              <li>{lis}</li>
+            ))
+            }
+           </ul>
+           <p>
+            {ec.extra_info}
+          </p>             
+          </div>
+          <img src={ec.image} alt="Imagen de la empresa">
+        </div>
+        ))
+      }
+  </div>
+</section>
+  <footer>
+    <div class="foot">
+      <h3>
+        <b>Ubicanos y Contactanos por:</b>
+      </h3>
+      <div class="icons">
+        <a  href="https://wa.link/5x7v06" target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/icon_whatsapp.svg" alt="Whatsapp"></a>
+        <a  href="mailto:jcomercial@empresa-eucaliptus.com ?subject=Consulta&body=Hola,%20quiero%20hacerte%20una%20consulta." target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/icon_mail.svg" alt="Mail"></a>
+        <a  href="https://maps.app.goo.gl/KvypU8gvzEVvwjGD6" target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/icon_maps.svg" alt="Maps"></a>
+      </div>
+      </div>
+      <div class="foot">
+      <h3>
+        <b>Visitanos en Nuestras Redes Sociales:</b>
+      </h3>
+        <div class="icons2">
+          <a href="https://www.instagram.com/EIECOSS_SRL/" target="_blank "><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/instagram-icon.png" alt="link de instagram"></a>
+          <a href="https://www.facebook.com/profile.php?id=61565396315237&mibextid=JRoKGi" target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/facebook.png" alt="facebook"></a>
+          <a href="https://www.tiktok.com/@eiecoss?_t=8pmRi0HReRZ&_r=1" target="_blank"><img src="/Empresa-Industrial-Eucaliptus-S.R.L./images/tik-tok.png" alt="tik Tok"></a>
+        </div>
+      
+    </div>
+  </footer>
+  <style>
+  *{
+      padding: 0;
+      margin: 0;
+  }
+  body{
+    height: all;
+    margin: 0;
+    background: linear-gradient(to bottom, #fcfbf2, #ffffff);
+      
+  }
+    .header-all{
+    padding: 20px 10px;
+    font-size: 20px;
+    background:linear-gradient(to bottom, #f1f663 10%, #ffffff ) ;
+  }
+   .header-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+    animation: slideInFromLeft 1s ease-out forwards;
+  }
+   .header-top h3{
+    font-size: 20px;
+    color: green;
+    font-family: "Myriad Pro Regular";
+    max-width: 12rem;
+
+  }
+   .header-btn{
+    background-color: transparent;
+    border: transparent;
+
+  }
+   .header-menu{
+    display: none;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .header-menu li{
+    margin: 10px;
+  }
+  .header-menu a{
+    text-decoration: none;
+    color: rgb(19, 90, 19);  
+        
+  }
+    .head{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin-top: 0px;
+      max-height: 70px
+      animation: slideInFromLeft 1s ease-out forwards;
+    }
+          
+    .head img{
+      width: 100%;
+      max-height: 80px;
+      object-fit: cover;
+      filter: brightness(50%);
+      z-index: -1;
+    }
+    .head h2{
+      z-index: 1;
+      position: absolute;
+      color: white;
+      font-family: "Myriad Pro Regular", sans-serif;
+      font-size: 17px;
+      display: grid;
+      top: 30px;
+      text-align: center;
+    }
+    .information{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+            transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .information.visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .information-top{
+      display: flex;
+      flex-direction: column;
+      font-family: "Myriad Regular";
+      align-items: center;
+      max-width: 18rem;
+    }
+    .information-top h3{
+      font-size: 20px;
+      text-align: center;
+      margin: 10px 0px;
+    }    
+    .information-top p{
+      font-size: 12px;
+      text-align: center;
+      margin: 10px 0px;
+    }
+    .information-top li{
+      font-size: 12px;
+      max-width: 15rem;
+    }
+    .information img{
+      width: 220px;
+      height: 220px;
+      border-radius: 10px;
+      box-shadow: 10px 20px 100px #c1ab3e;
+      margin: 20px 0px;
+    }
+    footer{
+      background-color: rgb(6, 34, 6);
+      height: 319px;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-evenly;
+      text-align: center;
+      max-height: 150px;
+
+    }
+    footer h3{
+      margin: 20px;
+      font-size: 10px;
+      font-family: "Archivo Black", sans-serif;
+      color: white;
+    }
+    .foot h3{
+      margin: 20px;
+      font-size: 24;
+      font-family: "Archivo Black", sans-serif;
+      color: white;
+    }
+    .foot img{
+      width: 20px;
+      height: 20px;
+      padding: 0px 10px;
+      transition: transform, 500ms;
+    }
+    .foot img:hover{
+      transform: scale(1.5);
+    }
+    .foot{
+      display: flex;
+      justify-content:center ;
+      align-items: center;
+      flex-direction: column;
+    }
+    .form{
+      font-size: 24px;
+      line-height: 1.5;
+    }
+    .information1 {
+      list-style: none;
+    }
+
+    @media (min-width: 375px){
+      .information-top {
+        max-width: 20rem;
+      }
+      .information li {
+        max-width: 17rem;
+      }
+    }
+    @media(min-width: 425px){
+      .information-top{
+        max-width: 25rem;
+      }
+      .information li{
+        max-width: 20rem;
+      }
+    }
+    @media (min-width: 658px){
+      .header-top h3{
+        max-width: 45rem;
+      }
+      .head h2{
+        font-size: 40px;
+        top:60px;
+        text-align: center;
+      }
+      .head img{
+        max-height: 180px;
+      }
+      .information-top {
+        max-width: 45rem;
+      }
+      .information img {
+        width: 300px;
+        height: 300px;
+      }
+      .information-top li{
+        max-width: 42rem;
+        font-size: 18px;
+        list-style: circle;
+      }
+      .information-top h3{
+        font-size: 30px;
+      }
+      .information-top p{
+        font-size: 20px;
+      }
+      .foot h3{
+        font-size: 15px;
+      }
+      .foot .icons img {
+        height: 35px;
+        width: 35px;
+        padding: 0;
+        margin: 0px 10px ;
+      }
+      .foot .icons2 img {
+        height: 35px;
+        width: 35px;
+        padding: 0;
+        margin: 0px 10px ;
+      }
+    }
+  /* Animación de fade-in */
+      @keyframes fadeIn {
+          0% { 
+              opacity: 0; 
+          }
+          100% { 
+              opacity: 1; 
+          }
+      }
+
+      .fade-in {
+          animation: fadeIn 1s ease-in forwards;
+      }
+      @keyframes slideInFromLeft {
+          0% {
+              transform: translateX(-100%);
+              opacity: 0;
+          }
+          100% {
+              transform: translateX(0);
+              opacity: 1;
+          }
+      }
+
+      @keyframes slideInFromRight {
+          0% {
+              transform: translateX(100%);
+              opacity: 0;
+          }
+          100% {
+              transform: translateX(0);
+              opacity: 1;
+          }
+      }
+  @keyframes slideInFromBottom {
+          0% {
+              transform: translateY(100%);
+              opacity: 0;
+          }
+          100% {
+              transform: translateY(0);
+              opacity: 1;
+          }
+      }
+    @media (min-width: 1024px){
+      .header-all{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background:none;
+      }
+      .header-top h3{
+        max-width: 100%;
+        font-family: "Archivo Black", sans-serif;
+        font-size: 20px;
+      }
+      .header-menu {
+        flex-direction: row;
+      }
+      .header-menu a{
+        font-family: "Archivo Black", sans-serif;
+        font-size: 20px;
+        color: green;
+      }
+      .product a{
+        color: #E2B155;
+      }
+      .header-btn{
+        display: none;
+      }
+      .head{
+        margin: 50px 0px;
+      }
+      .head h2{
+        top: 85px;
+        font-size: 70px;
+      }
+      .head img{
+        min-height: 250px;
+      }
+      .information{
+        margin: 30px 0px;
+      }
+      .information1, .information3{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .information2, .information4{
+        flex-direction: row-reverse;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .information1 p{
+        max-width: 35rem;
+        padding-right: 30px;
+      }
+      .information2 p{
+        text-align: left;
+      }
+      .information3 p{
+        text-align: left;
+      }
+      .information3 p,h3{
+        max-width: 35rem;
+        padding-right: 30px;
+      }
+      .information2 p,h3{
+        max-width: 35rem;
+        padding-left: 30px;
+      }
+      .information4 p,h3{ 
+        max-width: 35rem;
+        padding-left: 30px;
+      }
+      .information li {
+        max-width: 24rem
+      }
+      .information img{
+        width: 300px;
+        height: 400px;
+      }
+      .foot h3{
+              font-size: 20px;
+          }
+          .foot .icons img {
+              height: 40px;
+              width: 40px;
+              padding: 0;
+              margin: 0px 10px ;
+          }
+          .foot .icons2 img {
+              height: 40px;
+              width: 40px;
+              padding: 0;
+              margin: 0px 10px ;
+          }
+      footer {
+        min-height: 250px;
+      }
+    }
+    @media (min-width: 1440px){
+      .header-menu a{
+        font-size: 25px;
+      }
+      .header-top h3{
+        font-size: 25px;
+      }
+      .information p{
+        font-size: 20px;
+      }
+      .information h3{
+        font-size: 40px;
+      }
+      .information p, h3{
+        max-width: 55rem;
+      }
+      .information li{
+        max-width: 40rem;
+        font-size: 17px;
+      }
+      .information img{
+        width: 384px;
+        height: 385px;
+      }
+    }
+    @media(min-width: 2560px){
+        .information{
+          min-width: 90%;
+          justify-content: space-evenly;
+        }
+        .information1, .information3 {
+          background-color: #cbe1ec;
+          border-radius: 30px;
+          box-shadow: 30px 20px 20px 1px rgb(145, 135, 135);
+        }
+        .information p{
+          max-width: 700rem;
+          font-size: 30px;
+        }
+        .information li{
+          font-size: 27px;
+        }
+        .information img{
+          width: 587px;
+          height: 585px;
+          border-radius: 30px;
+        }
+        footer{
+          min-height: 400px;
+        }
+        .foot h3{
+          font-size: 40px;
+        }
+        .foot img {
+          min-width:73px;
+          min-height: 73px;
+        }
+    }
+  </style>
+  <script>
+    const fadeElements = document.querySelectorAll('.information, .contenidoo');
+    const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      } else {
+      entry.target.classList.remove('visible');
+      }
+    });
+    }, {
+    threshold: 0.1 
+    });
+    fadeElements.forEach(element => {
+    observer.observe(element);
+    });
+
+            //Para el boton en mobile header 
+            const header_btn = document.querySelector('.header-btn');
+            const header_menu = document.querySelector('.header-menu');
+            header_btn.addEventListener('click', () => {
+              header_menu.style.display = header_menu.style.display === "block" ? "none" : "block";
+            });
+            window.addEventListener('resize', () => {
+              if (window.innerWidth >= 1024) {
+                header_menu.style.display = "flex"; 
+              } else {
+                header_menu.style.display = "none"; 
+              }
+            });
+            window.addEventListener('load', () => {
+              if (window.innerWidth >= 1024) {
+                header_menu.style.display = "flex"; 
+              } else {
+                header_menu.style.display = "none"; 
+              }
+            });
+            document.querySelectorAll('.header-menu a').forEach(item => {
+              item.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                  header_menu.style.display = "none"; 
+                }
+              });
+            });
+
+  </script>
+</body>
+</html>
